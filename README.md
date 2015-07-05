@@ -1,5 +1,13 @@
 # README
 
+## Setup
+
+```rake db:create db:migrate db:seed_fu```
+
+```rails s```
+
+open a browser and go to http://localhost:3000
+
 ## Some todos:
 Using sendgrid for email $9/mo for 40k emails
 
