@@ -1,0 +1,19 @@
+- customer.emails.each do |email|
+  .form-inline
+    = form_for [:admin, customer, email], :html => { :role => "form" } do |f|
+      .form-group
+        = f.label :email
+      .form-group
+        = f.email_field :address, class: "form-control", placeholder: email.address
+      .form-group
+        = f.submit "Update Email", class: "btn btn-success"
+%p
+.add-email.hidden
+  .form-inline
+    = form_for new_admin_customer_email_path(['admin',customer.id]), method: :post, :html => { :role => "form" } do |f|
+      .form-group
+        = f.label :new_email
+      .form-group
+        = f.email_field :address
+      .form-group
+        = f.submit "Add Email", class: "btn btn-success btn-small"

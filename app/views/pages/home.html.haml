@@ -1,0 +1,58 @@
+- title("All-Star Appliance Repair Pros")
+.container
+  .row
+    .col-sm-6
+      .img-inline
+        - if mobile?
+          =image_tag("all-star-logo-600x400px.png", style: "height: 150px; width: 280px; overflow: hidden;")
+        - else
+          =image_tag("all-star-logo-600x400px.png", style: "height: 300px; width: 560px; overflow: hidden;")
+      .center-block
+        .h4
+          Serving Texas Since 1977
+    .col-sm-5.social
+      - unless mobile?
+        .h1.text-danger.big-phone-number
+          %span.fa.fa-phone-square
+            = phone_number(request)
+      .social-links
+        = render "shared/social_links"
+      %br
+        %br
+      .fa-border
+        %span.fa-stack.fa-lg
+          %i{class: "fa fa-circle fa-stack-2x"}
+          %i{class: "fa fa-flag fa-stack-1x fa-inverse"}
+        Appliance Repair in
+        %b Austin, San Antonio & Surrounding Areas
+        with
+        %b Same Day Service
+        and 24/7 Emergency Services Available
+
+  -#- puts request.user_agent
+  .row
+    .col-sm-5
+      .h4
+        .fa-border.div.services.row
+          %u.lead.center-block Services
+          %hr
+          - Services.services.base_services.each do |service|
+            %p.services-content #{service}
+          %br
+          %br
+          %br
+    .col-sm-offset-1.col-sm-5
+      .h4
+        .fa-border.div.services.row
+          %u.lead.center-block What We Repair
+          %hr
+          - Services.services.base_repaired.each do |repaired|
+            %p.services-content #{repaired}
+  %hr
+  .row.lead
+    We take pride in offering free service calls and same day service.  Our friendly and knowledgeable staff is available by phone 7 days a week to answer your questions, and to schedule a service call with our professional technicians.
+
+%hr
+- if Endorsement.approved.count > 0
+  .h3 One of our customers says...
+  = render "shared/endorsement", endorsement: Endorsement.approved.sample

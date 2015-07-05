@@ -1,0 +1,20 @@
+- title("Post Drafts")
+%h3.page-title
+  Posts
+  %small Drafts
+%p= link_to "Back to dashboard", admin_posts_dashboard_path
+%hr/
+%p.pagination-summary= page_entries_info @posts
+= paginate @posts
+%hr/
+%ul.fa-ul
+  - @posts.each do |post|
+    %li.margin-md-down
+      %i.fa.fa-arrow-circle-o-right.small>
+      \&nbsp;&nbsp;
+      \#{link_to post.title, edit_admin_post_path(post.slug)}
+      %br/
+      %small.x-small-text
+        about #{time_ago_in_words(post.updated_at)} ago
+%hr/
+= paginate @posts

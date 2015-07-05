@@ -1,0 +1,47 @@
+base: &base
+  application:
+    host: allstarappliancerepairpros.com
+    company_name: "All Star Appliance Repair Pros"
+    https: false
+    protocol: http
+    port: 3000
+#    user: <%= `whoami`.chomp %>
+    allow_username_or_email_login: true
+    logfile: application.log
+    phones:
+      san_antonio: (830) 431-3989
+      austin: (512) 431-3989
+    extra:
+      ## Google analytics. Uncomment if you want it
+      # google_analytics_id: '_your_tracking_id'
+    contact_email: testemail@allstarappliancerepairpros.com
+    san_antonio_post_codes: <%= %w(78056 78073 78202 78203 78204 78205 78207 78208 78210 78211 78214 78215 78217 78218 78220 78221 78222 78224 78225 78226 78227 78229 78230 78231 78234 78235 78237 78242 78243 78245 78247 78248 78249 78250 78251 78252 78253 78257 78258 78259 78260 78264) %>
+    austin_post_codes: <%= %w(778610 78613 78617 78641 78652 78653 78660 78664 78681 78701 78702 78703 78704 78705 78712 78717 78719 78721 78722 78723 78724 78725 78726 78727 78728 78729 78730 78731 78732 78733 78734 78735 78736 78737 78738 78739 78741 78742 78744 78745 78746 78747 78748 78749 78750 78751 78752 78753 78754 78756 78757 78758 78759) %>
+
+  social:
+    facbook_app_id: 384071068430902
+    google_app_id: 111636487359558227236
+
+  email:
+    address: "smtp.gmail.com"
+    host: "smtp.gmail.com"
+    port: 587
+    domain: allstarappliancerepairpros.com
+#    domain: gmail.com
+    user_name: someuser@gmail.com
+    password: somepassword
+    authentication: "plain"
+    enable_starttls_auto: true
+
+  recaptcha:
+    public_key: 6LcI8gATAAAAANN4SHs3TpWh_gUMNRmc5jjanp_4
+    private_key: 
+
+production:
+  <<: *base
+
+development:
+  <<: *base
+
+test:
+  <<: *base

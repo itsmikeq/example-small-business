@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Endorsement:
+  = @endorsement.endorsement
+%p
+  %b Customer:
+  = @endorsement.customer
+%p
+  %b Approved:
+  = @endorsement.approved
+
+= link_to 'Edit', edit_endorsement_path(@endorsement)
+\|
+= link_to 'Back', endorsements_path

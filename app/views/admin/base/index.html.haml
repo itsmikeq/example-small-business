@@ -1,0 +1,26 @@
+- title("Admin")
+%h1
+  Admin
+  %small Home
+.row
+  .col-sm-4
+    %h3 Menu
+    %h4
+      = link_to "Customers", admin_customers_path
+      %small
+        \- #{"#{pluralize(@count, 'user')}"}
+    %h4
+      = link_to "Self Help Articles", admin_posts_dashboard_path
+      %small
+        \- #{"#{pluralize(@post_count, 'post')}"}
+    %hr/
+  .col-sm-4
+    %h3 Latest Customers
+    %ul.list-unstyled
+      - @last_signups.each do |user|
+        %li.list-padded-bottom
+          = link_to user.name, edit_admin_customer_path(user)
+          %br/
+          %small
+            = time_ago_in_words(user.created_at)
+            ago

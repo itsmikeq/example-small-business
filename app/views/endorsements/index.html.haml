@@ -1,0 +1,9 @@
+%h3 Endorsements
+= link_to "Endorse #{Settings.application.company_name}", new_endorsement_path, class: "btn btn-default"
+%hr
+
+- if @endorsements.approved.any?
+  - @endorsements.approved.each do |endorsement|
+    = render "shared/endorsement", endorsement: endorsement
+  %br
+

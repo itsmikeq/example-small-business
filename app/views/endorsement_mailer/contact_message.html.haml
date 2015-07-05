@@ -1,0 +1,14 @@
+%p
+  New endorsement message received at #{Settings.application.host}:
+%p --------------
+%p
+  From: #{@name} - #{@email} - #{@phone}
+%p --------------
+%p
+  To approve, go to http://#{Settings.application.host}/admin and approve the message
+
+Message:
+%br
+%br
+= sanitize(line_break(@message), tags: %w(br))
+

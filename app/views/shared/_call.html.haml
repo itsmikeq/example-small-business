@@ -1,0 +1,10 @@
+- if mobile?
+  =link_to "tel: #{phone_number(request)}",
+    class: "btn btn-lg btn-block btn-call" do
+    %span.fa.fa-phone-square
+      = phone_number(request)
+- else
+  - msg = 'Contact Us! - <b class=same-day-service>Same Day Service Available</b> - 24 Hour Service Available'
+  -#=link_to "Contact Us! - Same Day Service Available - 24 Hour Service Available",
+  =link_to raw(msg),
+    contact_path, class: "btn btn-lg btn-block btn-call"

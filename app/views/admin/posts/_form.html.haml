@@ -1,0 +1,31 @@
+- if @post.errors.any?
+  %ul
+    - @post.errors.full_messages.each do |msg|
+      %li= msg
+= form_for [:admin, @post], role: "form" do |f|
+  .form-group
+    = f.label :title
+    .row
+      .col-xs-12
+        = f.text_field :title, :autofocus => true, class: "form-control monospaced-control", placeholder: "Title (also used for URL slug)..."
+  .form-group
+    = f.label :content_md, "Content"
+    .row
+      .col-xs-12
+        = f.text_area :content_md, rows: 15, class: "form-control monospaced-control", placeholder: "Post content (Markdown format)..."
+  .form-group
+    .row
+      .col-xs-12
+        = f.check_box :draft
+        = f.label :draft, "draft"
+  .form-group
+    = f.label :updated_at, "Published date"
+    .row
+      .col-xs-12
+        = f.datetime_select :updated_at, class: "form-control"
+  .row
+    .col-xs-12.padded
+      %button.btn.btn-primary
+        %i.fa.fa-plus-square
+        Publish
+      \- #{link_to "Cancel", admin_posts_dashboard_path}

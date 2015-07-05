@@ -1,0 +1,20 @@
+%p
+- customer.phones.each do |phone|
+  .form-inline
+    - form_for(admin_customer_phone_path(customer, phone)) do |f|
+      .form-group
+        = f.label :number
+      .form-group
+        = f.phone_field :number
+      .form-group
+        = f.submit "Save Phone #", class: "btn btn-success btn-small"
+%p
+.add-phone.hidden
+  .form-inline
+    = form_for admin_customer_phones_path(customer), method: :post, remote: true do |ph|
+      .form-group
+        = ph.label :new_phone
+      .form-group
+        = ph.phone_field :phone
+      .form-group
+        = ph.submit "Create Phone", class: "btn btn-success btn-small"

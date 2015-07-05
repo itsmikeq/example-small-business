@@ -1,0 +1,7 @@
+%p
+  New message received at #{Settings.application.host}:
+%p --------------
+%p
+  From: #{@name} - #{@email} - #{@phone}
+%p --------------
+= sanitize(line_break(@message), tags: %w(br))

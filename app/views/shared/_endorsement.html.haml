@@ -1,0 +1,5 @@
+%blockquote
+  = endorsement.endorsement
+  - if (endorsement.customer.name rescue false)
+    %small
+      = endorsement.customer.name

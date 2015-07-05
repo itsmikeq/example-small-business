@@ -1,0 +1,12 @@
+- title("Self-Help Dashboard")
+%h3.page-title
+  Self Help Posts
+  %small Dashboard
+%p= link_to "Back to Admin", admin_root_path
+%hr/
+.row
+  .col-sm-4
+    Published: #{link_to "#{pluralize(@published_post_count, 'post')}", admin_posts_path}
+  .col-sm-4
+    Drafts: #{link_to "#{pluralize(@draft_post_count, 'draft')}", admin_posts_drafts_path}
+  .col-sm-4= link_to "New post", new_admin_post_path, class: "btn btn-default"

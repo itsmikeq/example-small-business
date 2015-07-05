@@ -1,0 +1,16 @@
+- title("Self-Help")
+%h2 Self Help
+- @posts.each do |post|
+  %hr
+  .title-box
+    %p
+      .lead
+        = link_to "#{post.title}", post_path(post.slug)
+      = raw post.content_html.first(100)
+      %span
+        %small
+          %em
+            = time_ago_in_words(post.updated_at)
+            ago
+.pagination-control.text-center
+  = paginate @posts

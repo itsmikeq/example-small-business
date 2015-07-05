@@ -1,0 +1,35 @@
+- title("Edit User Id: #{@customer.id}")
+- if @customer.errors.any?
+  #error_explanation
+    %h2= "#{pluralize(@customer.errors.count, "error")} prohibited this endorsement from being saved:"
+    %ul
+      - @customer.errors.full_messages.each do |msg|
+        %li= msg
+
+.row
+  .col-sm-6
+    %h1
+      Edit Customer
+      %small= "#{@customer.email.address rescue nil} - name: #{@customer.name}"
+    %p= link_to "Back to Users", admin_customers_path
+
+.form-inline
+  = form_for [:admin, @customer] do |f|
+    .form-group
+      = f.label :first_name
+    .form-group
+      = f.text_field :first_name, class: "form-control"
+    .form-group
+      = f.label :last_name
+    .form-group
+      = f.text_field :last_name, class: "form-control"
+    .form-group
+      = f.submit "Update User", class: "btn btn-danger"
+
+= render "admin/customers/phone_form", customer: @customer
+%p
+= render "admin/customers/email_form", customer: @customer
+
+%br
+%span{class: "btn btn-default unhide-phone"} Add Phone
+%span{class: "btn btn-default unhide-email"} Add Email

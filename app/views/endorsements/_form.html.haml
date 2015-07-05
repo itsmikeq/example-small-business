@@ -1,0 +1,23 @@
+= form_for @endorsement, class: "form form-horizontal" do |f|
+  .form-group
+    - if @endorsement.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@endorsement.errors.count, "error")} prohibited this endorsement from being saved:"
+        %ul
+          - @endorsement.errors.full_messages.each do |msg|
+            %li= msg
+    = f.text_area :endorsement, class: "form-control", placeholder: "endorsement"
+    %br
+    = f.fields_for "xtra[customer]" do | c|
+      = c.text_field :name, class: "form-control", placeholder: "Your name"
+    %br
+    = f.fields_for "xtra[email]" do | e|
+      = e.text_field :address, class: "form-control", placeholder: "me@this.com"
+    %br
+    = f.fields_for "xtra[phone]" do | e|
+      = e.text_field :number, class: "form-control", placeholder: "111-111-1111"
+
+    - unless mobile?
+      = recaptcha_tags :public_key => Settings.recaptcha.public_key
+
+  = f.submit 'Submit', class: "btn btn-success"
